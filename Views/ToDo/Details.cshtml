@@ -1,0 +1,41 @@
+﻿@model ToDoListApp.Models.ToDoItem
+
+@{
+    ViewData["Title"] = "Деталі завдання";
+}
+
+<h1>Деталі завдання</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">ID</dt>
+        <dd class="col-sm-9">@Model.Id</dd>
+
+        <dt class="col-sm-3">Назва</dt>
+        <dd class="col-sm-9">@Model.Title</dd>
+
+        <dt class="col-sm-3">Опис</dt>
+        <dd class="col-sm-9">@Model.Description</dd>
+
+        <dt class="col-sm-3">Статус</dt>
+        <dd class="col-sm-9">
+            @if (Model.IsCompleted)
+            {
+                <span class="badge bg-success">Виконано</span>
+            }
+            else
+            {
+                <span class="badge bg-warning">В процесі</span>
+            }
+        </dd>
+
+        <dt class="col-sm-3">Дата створення</dt>
+        <dd class="col-sm-9">@Model.CreatedAt.ToString("dd.MM.yyyy HH:mm")</dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Редагувати</a>
+    <a asp-action="Index" class="btn btn-secondary">Назад до списку</a>
+</div>

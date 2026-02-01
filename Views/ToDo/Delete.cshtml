@@ -1,0 +1,40 @@
+﻿@model ToDoListApp.Models.ToDoItem
+
+@{
+    ViewData["Title"] = "Видалити завдання";
+}
+
+<h1>Видалити завдання</h1>
+
+<h3>Ви впевнені, що хочете видалити це завдання?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">ID</dt>
+        <dd class="col-sm-9">@Model.Id</dd>
+
+        <dt class="col-sm-3">Назва</dt>
+        <dd class="col-sm-9">@Model.Title</dd>
+
+        <dt class="col-sm-3">Опис</dt>
+        <dd class="col-sm-9">@Model.Description</dd>
+
+        <dt class="col-sm-3">Статус</dt>
+        <dd class="col-sm-9">
+            @if (Model.IsCompleted)
+            {
+                <span class="badge bg-success">Виконано</span>
+            }
+            else
+            {
+                <span class="badge bg-warning">В процесі</span>
+            }
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Видалити" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary">Назад до списку</a>
+    </form>
+</div>
